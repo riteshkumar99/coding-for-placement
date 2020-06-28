@@ -1,26 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int numSubarraysWithSum(vector<int> &a, int s) {
-    int count = 0, currSum, n = a.size(), j = 1;
-    for(int i = 0; i<n; i++) {
-        currSum = a[i];
-        if(currSum == s) {
-            count++;
-        }
-        for(int j = i+1; j<n; j++) {
-            currSum += a[j];
-            if(currSum == s) {
-                count++;
-            } else if(currSum > s) {
-                break;
-            }
-        }
-    }
-    return count;
-}
-
 int main() {
-    vector<int> v = {0, 0, 0, 0, 0};
-    cout<<numSubarraysWithSum(v, 0)<<"\n";
+    vector<int> a = {1, 2, 3};
+    vector<int> b = {2, 3, 4};
+    map<pair<int, int>, int> m;
+    for(int i = 0; i<3; i++) {
+        m[{a[i], b[i]}] = a[i]*b[i];
+    }
+    for(auto it = m.begin(); it != m.end(); it++) {
+        cout<<"["<<it->first.first<<", "<<it->first.second<<"]"<<"=>"<<it->second<<endl;
+    }
 }
